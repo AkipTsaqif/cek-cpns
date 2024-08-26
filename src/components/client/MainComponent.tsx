@@ -160,6 +160,14 @@ const MainComponent: React.FC<MainComponentProps> = ({
         replace(`${pathName}?${params.toString()}`);
     };
 
+    const handleJurusanClick = () => {
+        console.log("Jurusan clicked", tempJurusan);
+        const params = new URLSearchParams(searchParams);
+        if (tempJurusan !== "") params.set("jurusan", tempJurusan);
+
+        replace(`${pathName}?${params.toString()}`);
+    };
+
     const handleTempJurusanChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -168,7 +176,7 @@ const MainComponent: React.FC<MainComponentProps> = ({
 
     return (
         <div className="flex flex-col h-[calc(100vh-10rem)]">
-            <div className="flex gap-4 w-1/2">
+            <div className="flex gap-4 w-2/3 items-center">
                 <div className="w-1/3">
                     <Label>Pilih Jenjang</Label>
                     <Select
@@ -199,6 +207,9 @@ const MainComponent: React.FC<MainComponentProps> = ({
                             )}
                         </SelectContent>
                     </Select>
+                    <Label className="text-[10px] italic text-neutral-400">
+                        Pilih jenjang. Cth: S-1, D-IV, dll
+                    </Label>
                 </div>
                 <div className="w-2/3">
                     <Label htmlFor="jurusan">Filter Jurusan</Label>
@@ -209,7 +220,12 @@ const MainComponent: React.FC<MainComponentProps> = ({
                         onKeyDown={handleJurusanChange}
                         onChange={handleTempJurusanChange}
                     />
+                    <Label className="text-[10px] italic text-neutral-400">
+                        Filter jurusan (ketik). Cth: informatika, teknik,
+                        industri, farmasi, dll
+                    </Label>
                 </div>
+                <Button onClick={handleJurusanClick}>Cari data CPNS</Button>
             </div>
             <DataTable columns={columns} data={data} />
         </div>

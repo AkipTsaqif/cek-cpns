@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({
     return (
         <div>
             <div className="flex justify-between items-end">
-                <div className="py-2 w-1/6 pr-2">
+                <div className="py-2 w-1/5">
                     <Label htmlFor="filter">Filter Tabel</Label>
                     <Input
                         id="filter"
@@ -157,7 +157,7 @@ export function DataTable<TData, TValue>({
                                         colSpan={columns.length}
                                         className="h-24 text-center"
                                     >
-                                        No results.
+                                        Tidak ada hasil.
                                     </TableCell>
                                 </TableRow>
                             )}
